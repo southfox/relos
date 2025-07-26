@@ -10,12 +10,16 @@ struct DetailView: View {
     @State private var showAlert = false
     @State private var titleAlert = "Hey!"
     @State private var messageAlert = "This is reusable"
+    @State private var isEnabled: Bool = true
     private let audioService = AudioPlayerService()
 
     var body: some View {
         formView
             .simpleAlert(isPresented: $showAlert, title: titleAlert, message: messageAlert)
             .navigationTitle("Add Alarm")
+            .onAppear {
+                isEnabled = item.isEnabled
+            }
             .onDisappear {
                 stopSound()
             }
@@ -24,7 +28,13 @@ struct DetailView: View {
     
     private var formView: some View {
         Form {
-            itemName
+            HStack {
+                itemName
+                Toggle(isOn: $isEnabled) {}
+                    .onChange(of: isEnabled) { oldValue, newValue in
+                        item.isEnabled = newValue
+                    }
+            }
             datePicker
             mp3List
             slider

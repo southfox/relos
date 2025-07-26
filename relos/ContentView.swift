@@ -11,6 +11,7 @@ import SwiftData
 struct ContentView: View {
     @Environment(\.modelContext) private var modelContext
     @Query private var items: [Item]
+    @State private var isEnabled: Bool = true
 
     var body: some View {
         NavigationSplitView {
@@ -24,6 +25,13 @@ struct ContentView: View {
                                 .font(.headline)
                             Text(item.timestamp, format: Date.FormatStyle(date: .complete, time: .shortened))
                                 .font(.subheadline)
+                            Toggle(isOn: $isEnabled) {}
+                                .onChange(of: isEnabled) { oldValue, newValue in
+                                    item.isEnabled = newValue
+                                }
+                                .onAppear {
+                                    isEnabled = item.isEnabled
+                                }
                         }
                     }
                 }

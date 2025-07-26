@@ -14,11 +14,13 @@ final class Item {
     var name: String
     var sound: String
     var volume: Double
+    var isEnabled: Bool = true
     
-    init(timestamp: Date = Date(), name: String = "", sound: String = "", volume: Double = 1.0) {
+    init(timestamp: Date = Date(), name: String = "", sound: String = "", volume: Double = 1.0, isEnabled: Bool = true) {
         self.timestamp = timestamp
         self.name = name
         self.sound = sound
         self.volume = volume
+        self.isEnabled = isEnabled
     }
 }
