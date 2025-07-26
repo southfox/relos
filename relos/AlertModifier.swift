@@ -22,6 +22,7 @@ struct AlertModifier: ViewModifier {
                 }
             } message: {
                 Text(message)
+                    .font(.subheadline)
             }
     }
 }

@@ -22,7 +22,7 @@ struct ContentView: View {
                         VStack(alignment: .leading, spacing: 8) {
                             Text(item.name)
                                 .font(.headline)
-                            Text(item.timestamp, format: Date.FormatStyle(date: .numeric, time: .standard))
+                            Text(item.timestamp, format: Date.FormatStyle(date: .complete, time: .shortened))
                                 .font(.subheadline)
                         }
                     }
