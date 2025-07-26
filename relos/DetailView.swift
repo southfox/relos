@@ -14,6 +14,5 @@ struct DetailView: View {
 }
 
 #Preview {
-    let sampleItem = Item(timestamp: Date(), name: "Sample Item")
-    DetailView(item: sampleItem)
+    DetailView(item: Item())
 }

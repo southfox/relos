@@ -12,9 +12,13 @@ import SwiftData
 final class Item {
     var timestamp: Date
     var name: String
+    var sound: String
+    var volume: Double
     
-    init(timestamp: Date, name: String) {
+    init(timestamp: Date = Date(), name: String = "Sample Item", sound: String = "Default", volume: Double = 1.0) {
         self.timestamp = timestamp
         self.name = name
+        self.sound = sound
+        self.volume = volume
     }
 }
