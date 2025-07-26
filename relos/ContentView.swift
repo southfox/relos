@@ -19,7 +19,12 @@ struct ContentView: View {
                     NavigationLink {
                         DetailView(item: item)
                     } label: {
-                        Text(item.timestamp, format: Date.FormatStyle(date: .numeric, time: .standard))
+                        VStack(alignment: .leading, spacing: 8) {
+                            Text(item.name)
+                                .font(.headline)
+                            Text(item.timestamp, format: Date.FormatStyle(date: .numeric, time: .standard))
+                                .font(.subheadline)
+                        }
                     }
                 }
                 .onDelete(perform: deleteItems)
