@@ -37,6 +37,13 @@
 			);
 			target = 987EE29F2E34F88700F465E8 /* relos */;
 		};
+		98C71FA12E353C540056238D /* Exceptions for "Resources" folder in "relos" target */ = {
+			isa = PBXFileSystemSynchronizedBuildFileExceptionSet;
+			membershipExceptions = (
+				ww3.sheelat.top/ww3/Readme.txt,
+			);
+			target = 987EE29F2E34F88700F465E8 /* relos */;
+		};
 /* End PBXFileSystemSynchronizedBuildFileExceptionSet section */
 
 /* Begin PBXFileSystemSynchronizedRootGroup section */
@@ -56,6 +63,14 @@
 		987EE2BE2E34F88800F465E8 /* relosUITests */ = {
 			isa = PBXFileSystemSynchronizedRootGroup;
 			path = relosUITests;
+			sourceTree = "<group>";
+		};
+		98C71F4A2E353C540056238D /* Resources */ = {
+			isa = PBXFileSystemSynchronizedRootGroup;
+			exceptions = (
+				98C71FA12E353C540056238D /* Exceptions for "Resources" folder in "relos" target */,
+			);
+			path = Resources;
 			sourceTree = "<group>";
 		};
 /* End PBXFileSystemSynchronizedRootGroup section */
@@ -89,6 +104,7 @@
 			isa = PBXGroup;
 			children = (
 				987EE2A22E34F88700F465E8 /* relos */,
+				98C71F4A2E353C540056238D /* Resources */,
 				987EE2B42E34F88800F465E8 /* relosTests */,
 				987EE2BE2E34F88800F465E8 /* relosUITests */,
 				987EE2A12E34F88700F465E8 /* Products */,
@@ -122,6 +138,7 @@
 			);
 			fileSystemSynchronizedGroups = (
 				987EE2A22E34F88700F465E8 /* relos */,
+				98C71F4A2E353C540056238D /* Resources */,
 			);
 			name = relos;
 			packageProductDependencies = (
