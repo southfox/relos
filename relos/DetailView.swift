@@ -43,7 +43,7 @@ struct DetailView: View {
     }
     
     private var itemName: some View {
-        TextField("Item Name", text: $item.name)
+        TextField("Alarm", text: $item.name)
             .font(.headline)
     }
     

@@ -15,12 +15,12 @@ struct ContentView: View {
     var body: some View {
         NavigationSplitView {
             List {
-                ForEach(items) { item in
+                ForEach(items.sorted(by: { $0.timestamp < $1.timestamp})) { item in
                     NavigationLink {
                         DetailView(item: item)
                     } label: {
                         VStack(alignment: .leading, spacing: 8) {
-                            Text(item.name)
+                            Text(item.name.isEmpty ? "Alarm" : item.name)
                                 .font(.headline)
                             Text(item.timestamp, format: Date.FormatStyle(date: .complete, time: .shortened))
                                 .font(.subheadline)
@@ -52,6 +52,7 @@ struct ContentView: View {
     private func addItem() {
         withAnimation {
             let newItem = Item()
+            newItem.name = "Alarm #\(items.count + 1)"
             modelContext.insert(newItem)
         }
     }

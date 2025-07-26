@@ -20,6 +20,10 @@ class AudioPlayerService: NSObject, AVAudioPlayerDelegate {
             .map { $0.lastPathComponent }
             .sorted()
     }
+    
+    var firstMp3File: String! {
+        mp3Files.first
+    }
 
     func stop() {
         audioPlayer?.stop()

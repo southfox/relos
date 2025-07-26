@@ -15,7 +15,7 @@ final class Item {
     var sound: String
     var volume: Double
     
-    init(timestamp: Date = Date(), name: String = "Sample Item", sound: String = "Default", volume: Double = 1.0) {
+    init(timestamp: Date = Date(), name: String = "", sound: String = "", volume: Double = 1.0) {
         self.timestamp = timestamp
         self.name = name
         self.sound = sound
