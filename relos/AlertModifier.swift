@@ -8,27 +8,31 @@
 import Foundation
 import SwiftUI
 
+struct AlertModel {
+    let title: String
+    let message: String
+}
+
 struct AlertModifier: ViewModifier {
     @Binding var isPresented: Bool
 
-    let title: String
-    let message: String
+    let model: AlertModel
 
     func body(content: Content) -> some View {
         content
-            .alert(title, isPresented: $isPresented) {
+            .alert(model.title, isPresented: $isPresented) {
                 Button("OK", role: .cancel) {
                     isPresented.toggle()
                 }
             } message: {
-                Text(message)
+                Text(model.message)
                     .font(.subheadline)
             }
     }
 }
 
 extension View {
-    func simpleAlert(isPresented: Binding<Bool>, title: String, message: String) -> some View {
-        self.modifier(AlertModifier(isPresented: isPresented, title: title, message: message))
+    func simpleAlert(isPresented: Binding<Bool>, model: AlertModel) -> some View {
+        self.modifier(AlertModifier(isPresented: isPresented, model: model))
     }
 }

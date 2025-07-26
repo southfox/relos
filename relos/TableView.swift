@@ -8,11 +8,28 @@
 import SwiftUI
 
 struct TableView: View {
+    // TBD: 50 is hardcoded, make a constant with that
+    @State private var isEnabled = Array(repeating: true, count: 50)
+    @Bindable var item: Item
+    var index: Int
+
     var body: some View {
-        Text(/*@START_MENU_TOKEN@*/"Hello, World!"/*@END_MENU_TOKEN@*/)
+        VStack(alignment: .leading, spacing: 8) {
+            Text(item.name.isEmpty ? "Alarm" : item.name)
+                .font(.headline)
+            Text(item.timestamp, format: Date.FormatStyle(date: .complete, time: .shortened))
+                .font(.subheadline)
+            Toggle(isOn: $isEnabled[index]) {}
+                .onChange(of: isEnabled[index]) { oldValue, newValue in
+                    item.isEnabled = newValue
+                }
+                .onAppear {
+                    isEnabled[index] = item.isEnabled
+                }
+        }
     }
 }
 
 #Preview {
-    TableView()
+    TableView(item: Item(), index: 1)
 }

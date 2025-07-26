@@ -8,18 +8,13 @@ struct DetailView: View {
     @Environment(\.dismiss) private var dismiss
     @State private var audioPlayer: AVAudioPlayer?
     @State private var showAlert = false
-    @State private var titleAlert = "Hey!"
-    @State private var messageAlert = "This is reusable"
-    @State private var isEnabled: Bool = true
+    @State private var alertModel = AlertModel(title: "", message: "")
     private let audioService = AudioPlayerService()
 
     var body: some View {
         formView
-            .simpleAlert(isPresented: $showAlert, title: titleAlert, message: messageAlert)
+            .simpleAlert(isPresented: $showAlert, model: alertModel)
             .navigationTitle("Add Alarm")
-            .onAppear {
-                isEnabled = item.isEnabled
-            }
             .onDisappear {
                 stopSound()
             }
@@ -30,16 +25,15 @@ struct DetailView: View {
         Form {
             HStack {
                 itemName
-                Toggle(isOn: $isEnabled) {}
-                    .onChange(of: isEnabled) { oldValue, newValue in
-                        item.isEnabled = newValue
-                    }
+                enabledToogle
             }
             datePicker
             mp3List
             slider
+            enabledSnooze
         }
     }
+    
     private var toolbar: some View {
         HStack(spacing: 1) {
             Spacer()
@@ -47,6 +41,7 @@ struct DetailView: View {
                 deleteItem()
             } label: {
                 Text("Delete")
+                    .font(.title2)
             }
             Spacer()
         }
@@ -55,6 +50,10 @@ struct DetailView: View {
     private var itemName: some View {
         TextField("Alarm", text: $item.name)
             .font(.headline)
+    }
+    
+    private var enabledToogle: some View {
+        Toggle(isOn: $item.isEnabled) {}
     }
     
     private var datePicker: some View {
@@ -90,6 +89,13 @@ struct DetailView: View {
             }
     }
     
+    private var enabledSnooze: some View {
+        Toggle(isOn: $item.isSnooze) {
+            Text("Snooze")
+                .font(.caption)
+        }
+    }
+    
     private func stopSound() {
         audioPlayer?.stop()
     }
@@ -99,13 +105,11 @@ struct DetailView: View {
             do {
                 try audioService.playSound(from: url, volumeLevel: Int(item.volume))
             } catch {
-                titleAlert = "Error"
-                messageAlert = "❌ Failed to play audio: \(error.localizedDescription)"
+                alertModel = AlertModel(title: "Error", message: "❌ Failed to play audio: \(error.localizedDescription)")
                 showAlert.toggle()
             }
         } else {
-            titleAlert = "Error"
-            messageAlert = "❌ Could not find the sound file."
+            alertModel = AlertModel(title: "Error", message: "❌ Could not find the sound file.")
             showAlert.toggle()
         }
     }

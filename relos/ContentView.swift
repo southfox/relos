@@ -11,32 +11,14 @@ import SwiftData
 struct ContentView: View {
     @Environment(\.modelContext) private var modelContext
     @Query private var items: [Item]
-    @State private var isEnabled: Bool = true
+    @State private var showAlert = false
+    @State private var alertModel = AlertModel(title: "", message: "")
 
     var body: some View {
         NavigationSplitView {
-            List {
-                ForEach(items.sorted(by: { $0.timestamp < $1.timestamp})) { item in
-                    NavigationLink {
-                        DetailView(item: item)
-                    } label: {
-                        VStack(alignment: .leading, spacing: 8) {
-                            Text(item.name.isEmpty ? "Alarm" : item.name)
-                                .font(.headline)
-                            Text(item.timestamp, format: Date.FormatStyle(date: .complete, time: .shortened))
-                                .font(.subheadline)
-                            Toggle(isOn: $isEnabled) {}
-                                .onChange(of: isEnabled) { oldValue, newValue in
-                                    item.isEnabled = newValue
-                                }
-                                .onAppear {
-                                    isEnabled = item.isEnabled
-                                }
-                        }
-                    }
-                }
-                .onDelete(perform: deleteItems)
-            }
+            listView
+                .simpleAlert(isPresented: $showAlert, model: alertModel)
+
 #if os(macOS)
             .navigationSplitViewColumnWidth(min: 180, ideal: 200)
 #endif
@@ -56,9 +38,27 @@ struct ContentView: View {
             Text("Select an item")
         }
     }
-
+    
+    private var listView: some View {
+        List {
+            ForEach(Array(items.sorted(by: { $0.timestamp < $1.timestamp }).enumerated()), id: \.element.id) { index, item in
+                NavigationLink {
+                    DetailView(item: item)
+                } label: {
+                    TableView(item: item, index: index)
+                }
+            }
+            .onDelete(perform: deleteItems)
+        }
+    }
+    
     private func addItem() {
         withAnimation {
+            guard items.count < 50 else {
+                alertModel = AlertModel(title: "Error", message: "❌ Could not add more than 10 items.")
+                showAlert.toggle()
+                return
+            }
             let newItem = Item()
             newItem.name = "Alarm #\(items.count + 1)"
             modelContext.insert(newItem)
