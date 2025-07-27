@@ -6,6 +6,11 @@
 	objectVersion = 77;
 	objects = {
 
+/* Begin PBXBuildFile section */
+		98C71FA92E369F190056238D /* README.md in Resources */ = {isa = PBXBuildFile; fileRef = 98C71FA82E369F190056238D /* README.md */; };
+		98C71FAB2E36A5740056238D /* README.en.md in Resources */ = {isa = PBXBuildFile; fileRef = 98C71FAA2E36A5740056238D /* README.en.md */; };
+/* End PBXBuildFile section */
+
 /* Begin PBXContainerItemProxy section */
 		987EE2B22E34F88800F465E8 /* PBXContainerItemProxy */ = {
 			isa = PBXContainerItemProxy;
@@ -27,6 +32,8 @@
 		987EE2A02E34F88700F465E8 /* relos.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = relos.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		987EE2B12E34F88800F465E8 /* relosTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = relosTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		987EE2BB2E34F88800F465E8 /* relosUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = relosUITests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
+		98C71FA82E369F190056238D /* README.md */ = {isa = PBXFileReference; lastKnownFileType = net.daringfireball.markdown; path = README.md; sourceTree = "<group>"; };
+		98C71FAA2E36A5740056238D /* README.en.md */ = {isa = PBXFileReference; lastKnownFileType = net.daringfireball.markdown; path = README.en.md; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFileSystemSynchronizedBuildFileExceptionSet section */
@@ -103,6 +110,8 @@
 		987EE2972E34F88700F465E8 = {
 			isa = PBXGroup;
 			children = (
+				98C71FA82E369F190056238D /* README.md */,
+				98C71FAA2E36A5740056238D /* README.en.md */,
 				987EE2A22E34F88700F465E8 /* relos */,
 				98C71F4A2E353C540056238D /* Resources */,
 				987EE2B42E34F88800F465E8 /* relosTests */,
@@ -242,6 +251,8 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				98C71FAB2E36A5740056238D /* README.en.md in Resources */,
+				98C71FA92E369F190056238D /* README.md in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
