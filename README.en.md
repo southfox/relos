@@ -1,4 +1,4 @@
-# 🕰️ Relós – El Despertador con Sentido del Humor
+# 🕰️ Relós – The Alarm Clock with a Slightly Questionable Sense of Humor
 
 📘 This README is in English. [Leer en español](README.md)
 
