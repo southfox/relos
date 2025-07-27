@@ -20,6 +20,24 @@
 - 📲 **Soporte para Apple Watch**: posponé la alarma desde tu muñeca, aunque no puedas posponer la vida.
 - 💻 **macOS opcional**: recordatorios cómicos tipo “¿no era hora de almorzar hace 3 reuniones?”
 - 👁️ **visionOS (experimental y posiblemente innecesario)**: alarmas flotantes en tu universo virtual… porque sí.
+- 🤖 Generador de Frases con IA: Usá GPT (como ChatGPT) para generar frases de despertador dinámicas y personalizadas en base a:
+    🕒 Hora del día
+    📅 Día de la semana
+    🌦️ Clima
+    📆 Eventos del calendario
+    😴 Hábitos de sueño (por ejemplo: “Ayer pospusiste la alarma 3 veces, campeón.”)
+    💼 “Es lunes. Yo también me quedaría en la cama… pero tu cuenta bancaria quizás no esté de acuerdo.”
+---
+## 🧠 Herramientas y Tecnologías de IA
+
+| Funcionalidad               | Herramienta / Tecnología                                              |
+|-----------------------------|------------------------------------------------------------------------|
+| Generación de frases           | OpenAI GPT, modelos LLM locales                                       |
+| Chat con el personaje          | Ingeniería de prompts / modelos ajustados (fine-tuned LLMs)           |
+| Inferencia del estado de ánimo   | ML local + comportamiento al posponer la alarma                    |
+| Síntesis de voz                  | ElevenLabs, Apple TTS, Azure TTS                                      |
+| Uso de clima y calendario        | APIs de iOS + prompts GPT con contexto                                |
+| Asistente para edición de frases | GPT con prompts tipo: “Generá 5 insultos sobre los lunes”        |
 
 ---
 

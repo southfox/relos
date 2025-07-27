@@ -20,6 +20,26 @@
 - 📲 **Apple Watch support**: Snooze from your wrist while being gently insulted.
 - 💻 **macOS (optional)**: Desktop version for dramatic Pomodoro breaks.
 - 👁️ **visionOS (experimental)**: Floating nonsense in your immersive workspace. Yes, this is real.
+- 🧩 **Bonus**: AI Assistant Modes.  
+- 🤖 **AI Phrase Generator**: Use GPT (like ChatGPT) to dynamically generate wake-up phrases based on:
+    🕒 Time of day
+    📅 Day of the week
+    🌦️ Weather
+    📆 Calendar events
+    😴 Sleep habits (e.g., “You hit snooze 3 times yesterday, champion.”)
+    💼 “It’s Monday. I don’t blame you for staying in bed. But your bank account might.”
+
+---
+## 🧠 AI Tools & Technologies
+
+| Feature                | Tool/Tech                                                |
+|------------------------|----------------------------------------------------------|
+| Phrase generation      | OpenAI GPT, local LLMs                                   |
+| Character chat         | Prompt engineering / fine-tuned LLMs                     |
+| Mood inference         | Local ML + time/snooze behavior                          |
+| Voice synthesis        | ElevenLabs, Apple TTS, Azure TTS                         |
+| Calendar/weather use   | iOS APIs + context-aware GPT prompts                     |
+| Phrase editor helper   | GPT with prompt like: “Generate 5 insults about Mondays” |
 
 ---
 
