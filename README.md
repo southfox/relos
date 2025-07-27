@@ -52,19 +52,19 @@ Próximamente – si sobrevivimos al QA.
 
 ⚙️ Configuración
 
-Activá las notificaciones (si no, nadie va a gritarte que despiertes).
-Elegí tus frases favoritas (o dejá que el caos decida).
-Ajustá el volumen: del susurro irónico al grito existencial.
+Activá las notificaciones (si no, nadie va a gritarte que despiertes).  
+Elegí tus frases favoritas (o dejá que el caos decida).  
+Ajustá el volumen: del susurro irónico al grito existencial.  
 
 ---
 
 💬 Frases matutinas
 
-“Son las 7:05... pero aún hay esperanza.”
-“Tu almohada te quiere, pero el mundo no espera.”
-“Despertate o perderás tu lugar en la historia.”
-“Postergado. Como tus sueños.”
-“Hola, soy tu alarma. No me odies, sólo soy la mensajera.”
+“Son las 7:05... pero aún hay esperanza.”  
+“Tu almohada te quiere, pero el mundo no espera.”  
+“Despertate o perderás tu lugar en la historia.”  
+“Postergado. Como tus sueños.”  
+“Hola, soy tu alarma. No me odies, sólo soy la mensajera.”  
 
 ---
 
@@ -118,9 +118,10 @@ Porque “Reloj” era demasiado normal. Y porque no pudimos ponerle “Desperta
 ## Notas finales 
 (Porque todo README necesita algo que no se lea)
 
-No se garantiza que te despiertes de buen humor.
-No recomendado para personas que se toman la vida demasiado en serio.
-Contiene trazas de sarcasmo.
+No se garantiza que te despiertes de buen humor.  
+No recomendado para personas que se toman la vida demasiado en serio.  
+Contiene trazas de sarcasmo.  
+
 ---
 
 🇪🇸 Español | [🇬🇧 English](README.en.md)

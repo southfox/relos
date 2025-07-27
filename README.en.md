@@ -52,9 +52,9 @@ Coming soon – join the waitlist or build character by being patient.
 
 ## ⚙️ Settings (a.k.a. Your Last Chance to Escape)
 
-- Turn on notifications (otherwise, no one will yell at you to wake up).
-- Choose your favorite wake-up phrases… or let chaos take the wheel.
-- Adjust the volume: from "ironic whisper" to "existential scream."
+- Turn on notifications (otherwise, no one will yell at you to wake up).  
+- Choose your favorite wake-up phrases… or let chaos take the wheel.  
+- Adjust the volume: from "ironic whisper" to "existential scream."  
 
 ---
 
@@ -64,7 +64,7 @@ Coming soon – join the waitlist or build character by being patient.
 > “Your pillow loves you, but the world won’t wait.”  
 > “Wake up or miss your place in history.”  
 > “Snoozed. Like your dreams.”  
-> “Hi, I’m your alarm. Don’t hate me — I’m just the messenger.”
+> “Hi, I’m your alarm. Don’t hate me — I’m just the messenger.”  
 
 ---
 
@@ -92,16 +92,16 @@ Imagine Nietzsche with a smartwatch and zero chill.
 ## ❓ Frequently Unasked Questions
 
 > **Does Relós make me more productive?**  
-> Depends. Does oversleeping and being late count as productivity?
+> Depends. Does oversleeping and being late count as productivity?  
 
 > **Can I use it without waking up?**  
-> Technically yes. But we wouldn’t recommend it. Or admit it.
+> Technically yes. But we wouldn’t recommend it. Or admit it.  
 
 > **Is it safe for children?**  
-> Only the sarcastic ones.
+> Only the sarcastic ones.  
 
 > **Why is it called Relós?**  
-> Because “Clock” was too boring. And we weren’t legally allowed to name it “Death-o-Matic 3000.”
+> Because “Clock” was too boring. And we weren’t legally allowed to name it “Death-o-Matic 3000.”  
 
 ---
 
@@ -125,7 +125,7 @@ Feedback, ideas or collaboration proposals (absurd or not):
 
 We do not guarantee you'll wake up in a good mood.  
 Not recommended for people who take life too seriously.  
-May contain traces of sarcasm.
+May contain traces of sarcasm.  
 
 ---
 
