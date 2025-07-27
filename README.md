@@ -6,6 +6,10 @@
 
 **Relós** es una app despertador que mezcla sonidos, frases absurdas y un estilo teatral para asegurarse de que *no tengas un buen día... sino uno memorable*. No garantiza puntualidad, pero sí risas. O al menos una ceja levantada.
 
+![Status](https://img.shields.io/badge/wake--up-success-brightgreen)
+![Mood](https://img.shields.io/badge/user%20mood-unknown-yellow)
+![Sarcasm](https://img.shields.io/badge/sarcasmo-100%25-blue)
+
 ---
 
 ## 🌟 Características
@@ -45,6 +49,65 @@ Próximamente – si sobrevivimos al QA.
 ```
 
 ---
+
+⚙️ Configuración
+
+Activá las notificaciones (si no, nadie va a gritarte que despiertes).
+Elegí tus frases favoritas (o dejá que el caos decida).
+Ajustá el volumen: del susurro irónico al grito existencial.
+
+---
+
+💬 Frases matutinas
+
+“Son las 7:05... pero aún hay esperanza.”
+“Tu almohada te quiere, pero el mundo no espera.”
+“Despertate o perderás tu lugar en la historia.”
+“Postergado. Como tus sueños.”
+“Hola, soy tu alarma. No me odies, sólo soy la mensajera.”
+
+---
+
+🎨 Estilo visual
+
+Minimalista, absurdo, un poco vintage, un poco existencialista. Como si Nietsche tuviera un Apple Watch y muchas ganas de joderte la mañana.
+
+---
+
+🛣️ Roadmap (o plan maligno)
+ 
+- [ ] Modo "Frase del día"
+- [ ] Integración con calendario para frases personalizadas  
+      _("Hoy tenés reunión. Lo siento.")_
+- [ ] Alarmas con voz grabada (sí, podés insultarte a vos mismo)
+- [ ] Modo "Despertador filosófico"
+- [ ] Versión Android (para que nadie se salve)
+- [ ] Modo avión… que te despierta igual
+- [ ] Editor de frases absurdas personalizadas
+- [ ] Alarmas temáticas (gótica, existencial, motivación dudosa)
+  
+---
+
+❓ Preguntas frecuentes que nadie hizo
+
+> **¿Relós me hace más productivo?**
+> Depende. ¿Dormir más y llegar tarde cuenta como productividad?
+> **¿Puedo usarlo sin despertarme?**
+Técnicamente sí. Pero no sería recomendable. O legal.
+> **¿Es apto para niños?**
+Sólo para los que ya vienen con sarcasmo instalado.
+> **¿Por qué se llama Relós?**
+Porque “Reloj” era demasiado normal. Y porque no pudimos ponerle “Despertador Asesino 3000”.
+
+---
+
+## 😵‍💫 Compilar desde Xcode
+1. Cloná este proyecto [Relós][relos-link]!
+2. Abrí Relos.xcodeproj
+3. Elegí tu dispositivo (iPhone, Apple Watch o tostadora inteligente)
+4. Ejecutá... y resignate.
+
+---
 ## 📫 Contacto
 
 ¿Querés colaborar, quejarte o contarnos un mal sueño?
@@ -53,7 +116,7 @@ Próximamente – si sobrevivimos al QA.
 
 ---
 ## Notas finales 
-Porque todo README necesita algo que no se lea)
+(Porque todo README necesita algo que no se lea)
 
 No se garantiza que te despiertes de buen humor.
 No recomendado para personas que se toman la vida demasiado en serio.
@@ -61,3 +124,5 @@ Contiene trazas de sarcasmo.
 ---
 
 🇪🇸 Español | [🇬🇧 English](README.en.md)
+
+[relos-link]: https://github.com/yourusername/relos
