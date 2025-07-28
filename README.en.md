@@ -126,7 +126,7 @@ Imagine Nietzsche with a smartwatch and zero chill.
 ---
 
 ## 😵‍💫 Build from Xcode
-1. Clone this proyecto
+1. Clone this proyecto [Relós][relos-link]!
 2. Open Relos.xcodeproj
 3. Pick your device (iPhone, Apple Watch or toaster)
 4. Run... and cry...
@@ -150,3 +150,5 @@ May contain traces of sarcasm.
 ---
 
 🇬🇧 English | [🇪🇸 Español](README.md)
+
+[relos-link]: https://github.com/southfox/relos

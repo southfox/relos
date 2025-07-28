@@ -144,4 +144,4 @@ Contiene trazas de sarcasmo.
 
 🇪🇸 Español | [🇬🇧 English](README.en.md)
 
-[relos-link]: https://github.com/yourusername/relos
+[relos-link]: https://github.com/southfox/relos
