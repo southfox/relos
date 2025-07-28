@@ -93,13 +93,13 @@
 		98C71FDE2E380DD30056238D /* Exceptions for "relos" folder in "relos watch Watch App" target */ = {
 			isa = PBXFileSystemSynchronizedBuildFileExceptionSet;
 			membershipExceptions = (
-				AlertModifier.swift,
-				AudioPlayerService.swift,
-				ContentView.swift,
-				DetailView.swift,
-				Item.swift,
-				relosApp.swift,
-				TableView.swift,
+				Common/AlertModifier.swift,
+				Common/AudioPlayerService.swift,
+				Common/relosApp.swift,
+				Data/Item.swift,
+				View/ContentView.swift,
+				View/DetailView.swift,
+				View/TableView.swift,
 			);
 			target = 98C71FB12E380D650056238D /* relos watch Watch App */;
 		};
