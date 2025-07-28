@@ -41,7 +41,7 @@ struct DetailView: View {
                 deleteItem()
             } label: {
                 Text("Delete")
-                    .font(.title2)
+                    .font(.headline)
             }
             Spacer()
         }
@@ -49,7 +49,7 @@ struct DetailView: View {
     
     private var itemName: some View {
         TextField("Alarm", text: $item.name)
-            .font(.headline)
+            .font(.body)
     }
     
     private var enabledToogle: some View {
@@ -58,7 +58,7 @@ struct DetailView: View {
     
     private var datePicker: some View {
         DatePicker("Timestamp", selection: $item.timestamp)
-            .font(.caption)
+            .font(.body)
     }
     
     private var mp3List: some View {
@@ -73,7 +73,7 @@ struct DetailView: View {
             } label: {
                 HStack {
                     Text("Sound")
-                        .font(.caption)
+                        .font(.body)
                 }
             }
             .onChange(of: item.sound) { oldValue, newValue in
@@ -92,7 +92,7 @@ struct DetailView: View {
     private var enabledSnooze: some View {
         Toggle(isOn: $item.isSnooze) {
             Text("Snooze")
-                .font(.caption)
+                .font(.body)
         }
     }
     

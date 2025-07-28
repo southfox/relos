@@ -15,10 +15,20 @@ struct ContentView: View {
     @State private var alertModel = AlertModel(title: "", message: "")
 
     var body: some View {
+#if os(watchOS)
+        NavigationStack {
+            listView
+                .simpleAlert(isPresented: $showAlert, model: alertModel)
+                .navigationTitle("Alarms")
+                .navigationBarTitleDisplayMode(.inline)
+            Button(action: addItem) {
+                Label("Add Item", systemImage: "plus")
+            }
+        }
+#else
         NavigationSplitView {
             listView
                 .simpleAlert(isPresented: $showAlert, model: alertModel)
-
 #if os(macOS)
             .navigationSplitViewColumnWidth(min: 180, ideal: 200)
 #endif
@@ -37,6 +47,7 @@ struct ContentView: View {
         } detail: {
             Text("Select an item")
         }
+#endif
     }
     
     private var listView: some View {
