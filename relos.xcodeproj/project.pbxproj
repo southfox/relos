@@ -9,7 +9,7 @@
 /* Begin PBXBuildFile section */
 		98C71FA92E369F190056238D /* README.md in Resources */ = {isa = PBXBuildFile; fileRef = 98C71FA82E369F190056238D /* README.md */; };
 		98C71FAB2E36A5740056238D /* README.en.md in Resources */ = {isa = PBXBuildFile; fileRef = 98C71FAA2E36A5740056238D /* README.en.md */; };
-		98C71FD22E380D660056238D /* relos watch Watch App.app in Embed Watch Content */ = {isa = PBXBuildFile; fileRef = 98C71FB22E380D650056238D /* relos watch Watch App.app */; settings = {ATTRIBUTES = (RemoveHeadersOnCopy, ); }; };
+		98C71FD22E380D660056238D /* relos watch Watch App.app in Embed Watch Content */ = {isa = PBXBuildFile; fileRef = 98C71FB22E380D650056238D /* relos watch Watch App.app */; platformFilter = ios; settings = {ATTRIBUTES = (RemoveHeadersOnCopy, ); }; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -540,6 +540,7 @@
 		};
 		98C71FD12E380D660056238D /* PBXTargetDependency */ = {
 			isa = PBXTargetDependency;
+			platformFilter = ios;
 			target = 98C71FB12E380D650056238D /* relos watch Watch App */;
 			targetProxy = 98C71FD02E380D660056238D /* PBXContainerItemProxy */;
 		};

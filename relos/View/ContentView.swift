@@ -13,10 +13,11 @@ struct ContentView: View {
     @Query private var items: [Item]
     @State private var showAlert = false
     @State private var alertModel = AlertModel(title: "", message: "")
+    @State private var selectedItem: Item? = nil
 
     var body: some View {
 #if os(watchOS)
-        NavigationStack {
+        NavigationStack() {
             listView
                 .simpleAlert(isPresented: $showAlert, model: alertModel)
                 .navigationTitle("Alarms")
@@ -30,31 +31,33 @@ struct ContentView: View {
             listView
                 .simpleAlert(isPresented: $showAlert, model: alertModel)
 #if os(macOS)
-            .navigationSplitViewColumnWidth(min: 180, ideal: 200)
+                .navigationSplitViewColumnWidth(min: 180, ideal: 200)
 #endif
-            .toolbar {
+                .toolbar {
 #if os(iOS)
-                ToolbarItem(placement: .navigationBarTrailing) {
-                    EditButton()
-                }
+                    ToolbarItem(placement: .navigationBarTrailing) {
+                        EditButton()
+                    }
 #endif
-                ToolbarItem {
-                    Button(action: addItem) {
-                        Label("Add Item", systemImage: "plus")
+                    ToolbarItem {
+                        Button(action: addItem) {
+                            Label("Add Item", systemImage: "plus")
+                        }
                     }
                 }
-            }
         } detail: {
-            Text("Select an item")
+            if let selectedItem = selectedItem {
+                DetailView(item: selectedItem)
+            }
         }
 #endif
     }
     
     private var listView: some View {
-        List {
+        List(selection: $selectedItem) {
             ForEach(Array(items.sorted(by: { $0.timestamp < $1.timestamp }).enumerated()), id: \.element.id) { index, item in
                 NavigationLink {
-                    DetailView(item: item)
+                    DetailView(item: selectedItem ?? item)
                 } label: {
                     TableView(item: item, index: index)
                 }
@@ -66,13 +69,13 @@ struct ContentView: View {
     private func addItem() {
         withAnimation {
             guard items.count < 50 else {
-                alertModel = AlertModel(title: "Error", message: "❌ Could not add more than 10 items.")
+                alertModel = AlertModel(title: "Error", message: "❌ Could not add more than 50 items.")
                 showAlert.toggle()
                 return
             }
-            let newItem = Item()
-            newItem.name = "Alarm #\(items.count + 1)"
+            let newItem = items.createUniqueItem(with: "Alarm")
             modelContext.insert(newItem)
+            selectedItem = newItem
         }
     }
 

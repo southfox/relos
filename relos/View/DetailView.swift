@@ -4,6 +4,7 @@ import AVFoundation
 
 struct DetailView: View {
     @Bindable var item: Item
+    @Query private var items: [Item]
     @Environment(\.modelContext) private var modelContext
     @Environment(\.dismiss) private var dismiss
     @State private var audioPlayer: AVAudioPlayer?
@@ -31,6 +32,9 @@ struct DetailView: View {
             mp3List
             slider
             enabledSnooze
+            if item.isSnooze {
+                snoozeDuration
+            }
         }
     }
     
@@ -50,6 +54,14 @@ struct DetailView: View {
     private var itemName: some View {
         TextField("Alarm", text: $item.name)
             .font(.body)
+            .onChange(of: item.name) { oldValue, newValue in
+                if items.contains(where: { $0.name == newValue && $0.id != item.id }) {
+                    alertModel = AlertModel(title: "Error", message: "❌ \(newValue) is Duplicated Name.")
+                    showAlert.toggle()
+                    item.name = oldValue
+                    return
+                }
+            }
     }
     
     private var enabledToogle: some View {
@@ -59,6 +71,15 @@ struct DetailView: View {
     private var datePicker: some View {
         DatePicker("Timestamp", selection: $item.timestamp)
             .font(.body)
+            .onChange(of: item.timestamp) { oldValue, newValue in
+                let truncatedDate = newValue.truncatedToMinute
+                if items.contains(where: { $0.timestamp == truncatedDate && $0.id != item.id }) {
+                    alertModel = AlertModel(title: "Error", message: "❌ \(truncatedDate) is Duplicated timestamp.")
+                    showAlert.toggle()
+                    item.timestamp = oldValue
+                    return
+                }
+            }
     }
     
     private var mp3List: some View {
@@ -73,6 +94,27 @@ struct DetailView: View {
             } label: {
                 HStack {
                     Text("Sound")
+                        .font(.body)
+                }
+            }
+            .onChange(of: item.sound) { oldValue, newValue in
+                playSound()
+            }
+        }
+    }
+    
+    private var snoozeDuration: some View {
+        HStack(spacing: 10) {
+            Picker(selection: $item.snoozeDuration) {
+                ForEach(Array(1...15), id: \.self) { minute in
+                    Text(verbatim: "\(minute) min")
+                        .lineLimit(1)
+                        .font(.callout)
+                        .tag(minute)
+                }
+            } label: {
+                HStack {
+                    Text("Snooze duration")
                         .font(.body)
                 }
             }
