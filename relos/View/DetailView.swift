@@ -9,7 +9,7 @@ struct DetailView: View {
     @Environment(\.dismiss) private var dismiss
     @State private var audioPlayer: AVAudioPlayer?
     @State private var showAlert = false
-    @State private var alertModel = AlertModel(title: "", message: "")
+    @State private var alertModel = AlertModel("")
     private let audioService = AudioPlayerService()
 
     var body: some View {
@@ -56,7 +56,7 @@ struct DetailView: View {
             .font(.body)
             .onChange(of: item.name) { oldValue, newValue in
                 if items.contains(where: { $0.name == newValue && $0.id != item.id }) {
-                    alertModel = AlertModel(title: "Error", message: "❌ \(newValue) is Duplicated Name.")
+                    alertModel = AlertModel("\(newValue) is Duplicated Name.")
                     showAlert.toggle()
                     item.name = oldValue
                     return
@@ -74,7 +74,7 @@ struct DetailView: View {
             .onChange(of: item.timestamp) { oldValue, newValue in
                 let truncatedDate = newValue.truncatedToMinute
                 if items.contains(where: { $0.timestamp == truncatedDate && $0.id != item.id }) {
-                    alertModel = AlertModel(title: "Error", message: "❌ \(truncatedDate) is Duplicated timestamp.")
+                    alertModel = AlertModel("\(truncatedDate) is Duplicated timestamp.")
                     showAlert.toggle()
                     item.timestamp = oldValue
                     return
@@ -106,7 +106,7 @@ struct DetailView: View {
     private var snoozeDuration: some View {
         HStack(spacing: 10) {
             Picker(selection: $item.snoozeDuration) {
-                ForEach(Array(1...15), id: \.self) { minute in
+                ForEach(Item.snoozeArray, id: \.self) { minute in
                     Text(verbatim: "\(minute) min")
                         .lineLimit(1)
                         .font(.callout)
@@ -147,11 +147,11 @@ struct DetailView: View {
             do {
                 try audioService.playSound(from: url, volumeLevel: Int(item.volume))
             } catch {
-                alertModel = AlertModel(title: "Error", message: "❌ Failed to play audio: \(error.localizedDescription)")
+                alertModel = AlertModel("Failed to play audio: \(error.localizedDescription)")
                 showAlert.toggle()
             }
         } else {
-            alertModel = AlertModel(title: "Error", message: "❌ Could not find the sound file.")
+            alertModel = AlertModel("Could not find the sound file.")
             showAlert.toggle()
         }
     }

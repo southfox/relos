@@ -9,8 +9,18 @@ import Foundation
 import SwiftUI
 
 struct AlertModel {
-    let title: String
-    let message: String
+    var title: TitleError = .Error
+    var message: String = "Error occurred"
+    
+    init(_ message: String) {
+        self.message = message
+    }
+}
+
+enum TitleError: String {
+    case Error
+    case Warning
+    case Info
 }
 
 struct AlertModifier: ViewModifier {
@@ -20,7 +30,7 @@ struct AlertModifier: ViewModifier {
 
     func body(content: Content) -> some View {
         content
-            .alert(model.title, isPresented: $isPresented) {
+            .alert(model.title.rawValue, isPresented: $isPresented) {
                 Button("OK", role: .cancel) {
                     isPresented.toggle()
                 }

@@ -10,6 +10,7 @@ import AVFoundation
 
 class AudioPlayerService: NSObject, AVAudioPlayerDelegate {
     private var audioPlayer: AVAudioPlayer?
+    private var lastError: NSError?
     
     var mp3Files: [String] {
         guard let resourcePath = Bundle.main.resourcePath else { return [] }
@@ -43,6 +44,7 @@ class AudioPlayerService: NSObject, AVAudioPlayerDelegate {
             audioPlayer?.play()
             print("🔊 Playing sound with volume: \(volumeLevel)/10")
         } catch {
+            lastError = error as NSError
             throw error
         }
     }
@@ -55,6 +57,7 @@ class AudioPlayerService: NSObject, AVAudioPlayerDelegate {
     
     func audioPlayerDecodeErrorDidOccur(_ player: AVAudioPlayer, error: Error?) {
         if let error = error {
+            lastError = error as NSError
             print("❌ Decode error: \(error.localizedDescription)")
         }
     }

@@ -12,7 +12,7 @@ struct ContentView: View {
     @Environment(\.modelContext) private var modelContext
     @Query private var items: [Item]
     @State private var showAlert = false
-    @State private var alertModel = AlertModel(title: "", message: "")
+    @State private var alertModel = AlertModel("")
     @State private var selectedItem: Item? = nil
 
     var body: some View {
@@ -68,8 +68,8 @@ struct ContentView: View {
     
     private func addItem() {
         withAnimation {
-            guard items.count < 50 else {
-                alertModel = AlertModel(title: "Error", message: "❌ Could not add more than 50 items.")
+            guard items.count < Item.limit else {
+                alertModel = AlertModel("Could not add more than \(Item.limit) items.")
                 showAlert.toggle()
                 return
             }

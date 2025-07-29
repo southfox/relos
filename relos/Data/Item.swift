@@ -18,7 +18,7 @@ final class Item {
     var isSnooze: Bool = true
     var snoozeDuration: Int
 
-    init(timestamp: Date = Date().truncatedToMinute, name: String = "", sound: String = "", volume: Double = 1.0, isEnabled: Bool = true, isSnooze: Bool = true, snoozeDuration: Int = 5) {
+    init(timestamp: Date = Date().truncatedToMinute, name: String = "", sound: String = "", volume: Double = Item.volumeDefault, isEnabled: Bool = true, isSnooze: Bool = true, snoozeDuration: Int = Item.snoozeDurationDefault) {
         self.timestamp = timestamp
         self.name = name
         self.sound = sound
@@ -27,6 +27,13 @@ final class Item {
         self.isSnooze = isSnooze
         self.snoozeDuration = snoozeDuration
     }
+}
+
+extension Item {
+    static let limit: Int = Item.limit
+    static let snoozeDurationDefault: Int = 5
+    static let volumeDefault: Double = 1.0
+    static let snoozeArray = Array(1...15)
 }
 
 extension Array where Element == Item {

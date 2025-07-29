@@ -8,8 +8,7 @@
 import SwiftUI
 
 struct TableView: View {
-    // TBD: 50 is hardcoded, make a constant with that
-    @State private var isEnabled = Array(repeating: true, count: 50)
+    @State private var isEnabled = Array(repeating: true, count: Item.limit)
     @Bindable var item: Item
     var index: Int
 
