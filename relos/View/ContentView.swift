@@ -16,6 +16,13 @@ struct ContentView: View {
     @State private var selectedItem: Item? = nil
 
     var body: some View {
+        content
+            .onAppear {
+                let manager = AlarmManager()
+                manager.scheduleAlarms(for: items)
+            }
+    }
+    var content: some View {
 #if os(watchOS)
         NavigationStack() {
             listView

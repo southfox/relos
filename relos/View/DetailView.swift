@@ -66,6 +66,13 @@ struct DetailView: View {
     
     private var enabledToogle: some View {
         Toggle(isOn: $item.isEnabled) {}
+            .onChange(of: item.isEnabled) {
+                let manager = AlarmManager()
+                manager.cancelAlarm(for: item)
+                if item.isEnabled {
+                    manager.scheduleAlarm(for: item)
+                }
+            }
     }
     
     private var datePicker: some View {
@@ -77,8 +84,9 @@ struct DetailView: View {
                     alertModel = AlertModel("\(truncatedDate) is Duplicated timestamp.")
                     showAlert.toggle()
                     item.timestamp = oldValue
-                    return
                 }
+                let manager = AlarmManager()
+                manager.scheduleAlarm(for: item)
             }
     }
     
@@ -160,6 +168,8 @@ struct DetailView: View {
     private func deleteItem() {
         withAnimation {
             stopSound()
+            let manager = AlarmManager()
+            manager.cancelAlarm(for: item)
             modelContext.delete(item)
             dismiss()
         }

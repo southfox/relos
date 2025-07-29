@@ -93,6 +93,8 @@
 		98C71FDE2E380DD30056238D /* Exceptions for "relos" folder in "relos watch Watch App" target */ = {
 			isa = PBXFileSystemSynchronizedBuildFileExceptionSet;
 			membershipExceptions = (
+				Common/AlarmManager.swift,
+				Common/AlarmScheduler.swift,
 				Common/AlertModifier.swift,
 				Common/AudioPlayerService.swift,
 				Common/relosApp.swift,
