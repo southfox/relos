@@ -10,6 +10,7 @@ struct DetailView: View {
     @State private var audioPlayer: AVAudioPlayer?
     @State private var showAlert = false
     @State private var alertModel = AlertModel("")
+    let alarmManager: AlarmManager
     private let audioService = AudioPlayerService()
 
     var body: some View {
@@ -67,10 +68,8 @@ struct DetailView: View {
     private var enabledToogle: some View {
         Toggle(isOn: $item.isEnabled) {}
             .onChange(of: item.isEnabled) {
-                let manager = AlarmManager()
-                manager.cancelAlarm(for: item)
                 if item.isEnabled {
-                    manager.scheduleAlarm(for: item)
+                    alarmManager.scheduleAlarm(for: item)
                 }
             }
     }
@@ -85,8 +84,7 @@ struct DetailView: View {
                     showAlert.toggle()
                     item.timestamp = oldValue
                 }
-                let manager = AlarmManager()
-                manager.scheduleAlarm(for: item)
+                alarmManager.scheduleAlarm(for: item)
             }
     }
     
@@ -168,8 +166,7 @@ struct DetailView: View {
     private func deleteItem() {
         withAnimation {
             stopSound()
-            let manager = AlarmManager()
-            manager.cancelAlarm(for: item)
+            alarmManager.cancelAlarm(for: item)
             modelContext.delete(item)
             dismiss()
         }
@@ -178,5 +175,5 @@ struct DetailView: View {
 }
 
 #Preview {
-    DetailView(item: Item())
+    DetailView(item: Item(), alarmManager: AlarmManager())
 }

@@ -14,12 +14,13 @@ struct ContentView: View {
     @State private var showAlert = false
     @State private var alertModel = AlertModel()
     @State private var selectedItem: Item? = nil
+    private let alarmManager = AlarmManager()
+
 
     var body: some View {
         content
             .onAppear {
-                let manager = AlarmManager()
-                manager.scheduleAlarms(for: items)
+                alarmManager.scheduleAlarms(for: items)
             }
     }
     var content: some View {
@@ -54,7 +55,7 @@ struct ContentView: View {
                 }
         } detail: {
             if let selectedItem = selectedItem {
-                DetailView(item: selectedItem)
+                DetailView(item: selectedItem, alarmManager: alarmManager)
             }
         }
 #endif
@@ -64,9 +65,9 @@ struct ContentView: View {
         List(selection: $selectedItem) {
             ForEach(Array(items.sorted(by: { $0.timestamp < $1.timestamp }).enumerated()), id: \.element.id) { index, item in
                 NavigationLink {
-                    DetailView(item: selectedItem ?? item)
+                    DetailView(item: selectedItem ?? item, alarmManager: alarmManager)
                 } label: {
-                    TableView(item: item, index: index)
+                    TableView(item: item, index: index, alarmManager: alarmManager)
                 }
             }
             .onDelete(perform: deleteItems)
@@ -79,9 +80,9 @@ struct ContentView: View {
                 Section {
                     ForEach(Array((items.groupedItems[day] ?? []).sorted(by: { $0.timestamp < $1.timestamp }).enumerated()), id: \.element.id) { index, item in
                         NavigationLink {
-                            DetailView(item: selectedItem ?? item)
+                            DetailView(item: selectedItem ?? item, alarmManager: alarmManager)
                         } label: {
-                            TableView(item: item, index: index)
+                            TableView(item: item, index: index, alarmManager: alarmManager)
                         }
                     }
                 } header: {

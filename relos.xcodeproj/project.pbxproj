@@ -94,6 +94,7 @@
 			isa = PBXFileSystemSynchronizedBuildFileExceptionSet;
 			membershipExceptions = (
 				Common/AlarmManager.swift,
+				Common/AlarmNotificationManager.swift,
 				Common/AlarmScheduler.swift,
 				Common/AlertModifier.swift,
 				Common/AudioPlayerService.swift,

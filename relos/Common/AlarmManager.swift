@@ -20,6 +20,7 @@ class AlarmManager {
 
     // Schedule a single alarm
     func scheduleAlarm(for item: Item) {
+        cancelAlarm(for: item)
         let scheduler = AlarmScheduler(item: item)
         scheduler.schedule()
         schedulers[item.id] = scheduler

@@ -11,6 +11,7 @@ struct TableView: View {
     @State private var isEnabled = Array(repeating: true, count: Item.limit)
     @Bindable var item: Item
     var index: Int
+    let alarmManager: AlarmManager
 
     var body: some View {
         VStack(alignment: .leading, spacing: 8) {
@@ -22,6 +23,10 @@ struct TableView: View {
                 Toggle(isOn: $isEnabled[index]) {}
                     .onChange(of: isEnabled[index]) { oldValue, newValue in
                         item.isEnabled = newValue
+                        alarmManager.cancelAlarm(for: item)
+                        if newValue {
+                            alarmManager.scheduleAlarm(for: item)
+                        }
                     }
                     .onAppear {
                         isEnabled[index] = item.isEnabled
@@ -32,5 +37,5 @@ struct TableView: View {
 }
 
 #Preview {
-    TableView(item: Item(), index: 1)
+    TableView(item: Item(), index: 1, alarmManager: AlarmManager())
 }

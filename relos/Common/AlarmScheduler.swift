@@ -18,6 +18,10 @@ class AlarmScheduler {
     init(item: Item) {
         self.item = item
     }
+    
+    deinit {
+        print("Alarm scheduled for \(item.name) is being deinitialized")
+    }
 
     func schedule() {
         let timeInterval = item.timestamp.timeIntervalSinceNow
