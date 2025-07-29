@@ -12,7 +12,7 @@ struct ContentView: View {
     @Environment(\.modelContext) private var modelContext
     @Query private var items: [Item]
     @State private var showAlert = false
-    @State private var alertModel = AlertModel("")
+    @State private var alertModel = AlertModel()
     @State private var selectedItem: Item? = nil
 
     var body: some View {

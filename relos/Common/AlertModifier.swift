@@ -9,18 +9,19 @@ import Foundation
 import SwiftUI
 
 struct AlertModel {
-    var title: TitleError = .Error
-    var message: String = "Error occurred"
+    var title: TitleError
+    var message: String
     
-    init(_ message: String) {
+    init(title: TitleError = .error, _ message: String = "Error occurred") {
+        self.title = title
         self.message = message
     }
 }
 
 enum TitleError: String {
-    case Error
-    case Warning
-    case Info
+    case error
+    case warning
+    case info
 }
 
 struct AlertModifier: ViewModifier {
@@ -39,6 +40,21 @@ struct AlertModifier: ViewModifier {
                     .font(.subheadline)
             }
     }
+}
+
+#Preview("Error") {
+    Text("Example Error")
+        .simpleAlert(isPresented: .constant(true), model: AlertModel("This is an error message."))
+}
+
+#Preview("Warning") {
+    Text("Example Warning")
+        .simpleAlert(isPresented: .constant(true), model: AlertModel(title: .warning, "This is a warning message."))
+}
+
+#Preview("Info") {
+    Text("Example Info")
+        .simpleAlert(isPresented: .constant(true), model: AlertModel(title: .info, "This is a Info message."))
 }
 
 extension View {
