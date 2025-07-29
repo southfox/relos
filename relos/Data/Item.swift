@@ -30,7 +30,7 @@ final class Item {
 }
 
 extension Item {
-    static let limit: Int = Item.limit
+    static let limit: Int = 50
     static let snoozeDurationDefault: Int = 5
     static let volumeDefault: Double = 1.0
     static let snoozeArray = Array(1...15)
@@ -46,6 +46,16 @@ extension Array where Element == Item {
         } while self.contains(where: { $0.name == name })
         let newItem = Item(name: name)
         return newItem
+    }
+    
+    var groupedItems: [Date: [Item]] {
+        Dictionary(grouping: self) { item in
+            Calendar.current.startOfDay(for: item.timestamp)
+        }
+    }
+    
+    var sortedKeys: [Date] {
+        groupedItems.keys.sorted()
     }
 }
 

@@ -53,13 +53,34 @@ struct ContentView: View {
 #endif
     }
     
-    private var listView: some View {
+    private var listView2: some View {
         List(selection: $selectedItem) {
             ForEach(Array(items.sorted(by: { $0.timestamp < $1.timestamp }).enumerated()), id: \.element.id) { index, item in
                 NavigationLink {
                     DetailView(item: selectedItem ?? item)
                 } label: {
                     TableView(item: item, index: index)
+                }
+            }
+            .onDelete(perform: deleteItems)
+        }
+    }
+    
+    private var listView: some View {
+        List(selection: $selectedItem) {
+            ForEach(items.sortedKeys, id: \.self) { day in
+                Section {
+                    ForEach(Array((items.groupedItems[day] ?? []).sorted(by: { $0.timestamp < $1.timestamp }).enumerated()), id: \.element.id) { index, item in
+                        NavigationLink {
+                            DetailView(item: selectedItem ?? item)
+                        } label: {
+                            TableView(item: item, index: index)
+                        }
+                    }
+                } header: {
+                    Text(day, format: .dateTime.weekday().day().month().year())
+                        .font(.title2)
+                } footer: {
                 }
             }
             .onDelete(perform: deleteItems)

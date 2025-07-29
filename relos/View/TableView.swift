@@ -14,17 +14,19 @@ struct TableView: View {
 
     var body: some View {
         VStack(alignment: .leading, spacing: 8) {
-            Text(item.name.isEmpty ? "Alarm" : item.name)
-                .font(.headline)
-            Text(item.timestamp, format: Date.FormatStyle(date: .complete, time: .shortened))
-                .font(.subheadline)
-            Toggle(isOn: $isEnabled[index]) {}
-                .onChange(of: isEnabled[index]) { oldValue, newValue in
-                    item.isEnabled = newValue
-                }
-                .onAppear {
-                    isEnabled[index] = item.isEnabled
-                }
+            Text(item.timestamp, format: Date.FormatStyle(date: .none, time: .shortened))
+                .font(.largeTitle)
+            HStack {
+                Text(item.name.isEmpty ? "Alarm" : item.name)
+                    .font(.headline)
+                Toggle(isOn: $isEnabled[index]) {}
+                    .onChange(of: isEnabled[index]) { oldValue, newValue in
+                        item.isEnabled = newValue
+                    }
+                    .onAppear {
+                        isEnabled[index] = item.isEnabled
+                    }
+            }
         }
     }
 }
