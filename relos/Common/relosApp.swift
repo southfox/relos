@@ -19,6 +19,7 @@ struct relosApp: App {
         do {
             return try ModelContainer(for: schema, configurations: [modelConfiguration])
         } catch {
+            print("Remove sandbox container and try again.") // rm -rf ~/Library/Containers/javier.relos
             fatalError("Could not create ModelContainer: \(error)")
         }
     }()
@@ -26,6 +27,7 @@ struct relosApp: App {
     var body: some Scene {
         WindowGroup {
             ContentView()
+            
         }
         .modelContainer(sharedModelContainer)
     }
