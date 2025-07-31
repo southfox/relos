@@ -8,6 +8,7 @@
 import Foundation
 import AVFoundation
 
+/// TBD: migrate to Combine
 class AudioPlayerService: NSObject, AVAudioPlayerDelegate {
     private var audioPlayer: AVAudioPlayer?
     private var lastError: NSError?
@@ -16,10 +17,12 @@ class AudioPlayerService: NSObject, AVAudioPlayerDelegate {
         guard let resourcePath = Bundle.main.resourcePath else { return [] }
         let resourceURL = URL(fileURLWithPath: resourcePath)
         let files = (try? FileManager.default.contentsOfDirectory(at: resourceURL, includingPropertiesForKeys: nil)) ?? []
-        return files
+        var list = files
             .filter { $0.pathExtension.lowercased() == "mp3" }
             .map { $0.lastPathComponent }
             .sorted()
+        list.insert("Default.mp3", at: 0)
+        return list
     }
     
     var firstMp3File: String! {
@@ -28,6 +31,10 @@ class AudioPlayerService: NSObject, AVAudioPlayerDelegate {
 
     func stop() {
         audioPlayer?.stop()
+    }
+    
+    var isPlaying: Bool {
+        audioPlayer?.isPlaying == true
     }
     
     // Play a sound from a URL with a volume level (0–10)

@@ -25,17 +25,39 @@ struct DetailView: View {
     
     private var formView: some View {
         Form {
-            HStack {
-                itemName
-                enabledToogle
-            }
+            alarmEdition
             datePicker
-            mp3List
+            mp3Selection
             slider
             enabledSnooze
             if item.isSnooze {
                 snoozeDuration
             }
+        }
+    }
+    
+    private var alarmEdition: some View {
+        HStack {
+            itemName
+            enabledToogle
+        }
+    }
+    
+    private var mp3Selection: some View {
+        HStack {
+            mp3List
+            Spacer()
+            playButton
+        }
+    }
+    
+    private var playButton: some View {
+        Button(action: {
+            playSound()
+        }) {
+            Image(systemName: "play.fill")
+                .tint(item.sound.isEmpty ? .gray : .blue)
+//            Image(systemName: !item.sound.isEmpty ? "stop.fill" : "play.fill")
         }
     }
     
@@ -70,6 +92,9 @@ struct DetailView: View {
             .onChange(of: item.isEnabled) {
                 if item.isEnabled {
                     alarmManager.scheduleAlarm(for: item)
+                } else {
+                    alarmManager.cancelAlarm(for: item)
+                    audioService.stop()
                 }
             }
     }
@@ -84,30 +109,54 @@ struct DetailView: View {
                     showAlert.toggle()
                     item.timestamp = oldValue
                 }
-                alarmManager.scheduleAlarm(for: item)
+                if item.isEnabled {
+                    alarmManager.scheduleAlarm(for: item)
+                }
             }
     }
     
+    private var mp3ListPlaceholder: some View {
+        #if os(watchOS)
+        mp3List
+        #else
+        mp3List
+        #endif
+    }
+    
+#if os(watchOS)
     private var mp3List: some View {
-        HStack(spacing: 10) {
-            Picker(selection: $item.sound) {
-                ForEach(audioService.mp3Files, id: \.self) { file in
-                    Text(file)
-                        .lineLimit(1)
-                        .font(.callout)
-                        .tag(file)
-                }
-            } label: {
-                HStack {
-                    Text("Sound")
-                        .font(.body)
-                }
+        Picker(selection: $item.sound) {
+            ForEach(audioService.mp3Files, id: \.self) { file in
+                Text(file)
+                    .lineLimit(1)
+                    .font(.callout)
+                    .tag(file)
             }
-            .onChange(of: item.sound) { oldValue, newValue in
-                playSound()
+        } label: {
+            HStack {
+                Text("Sound")
+                    .font(.body)
             }
         }
     }
+#else
+    private var mp3List: some View {
+        Picker(selection: $item.sound) {
+            ForEach(audioService.mp3Files, id: \.self) { file in
+                Text(file)
+                    .lineLimit(1)
+                    .font(.callout)
+                    .tag(file)
+            }
+        } label: {
+            HStack {
+                Text("Sound")
+                    .font(.body)
+            }
+        }
+        .pickerStyle(.menu)
+    }
+#endif
     
     private var snoozeDuration: some View {
         HStack(spacing: 10) {
@@ -123,9 +172,6 @@ struct DetailView: View {
                     Text("Snooze duration")
                         .font(.body)
                 }
-            }
-            .onChange(of: item.sound) { oldValue, newValue in
-                playSound()
             }
         }
     }

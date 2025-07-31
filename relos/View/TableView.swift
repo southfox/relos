@@ -22,7 +22,7 @@ struct TableView: View {
                 if item.isInThePast {
                     Spacer()
                     Text("Past")
-                        .font(.default)
+                        .font(.caption)
                         .padding(.horizontal, 16)
                         .foregroundColor(Color.gray)
                         .background(Color.gray.opacity(0.2))
